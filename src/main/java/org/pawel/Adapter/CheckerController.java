@@ -3,13 +3,13 @@ package org.pawel.Adapter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
-import org.pawel.Service.CheckerService;
+import org.pawel.Service.SsnCheckerService;
 
 public class CheckerController {
-	CheckerService checkerService;
+	SsnCheckerService checkerService;
 	Scanner scanner = new Scanner(System.in);
 
-	public CheckerController(CheckerService checkerService) {
+	public CheckerController(SsnCheckerService checkerService) {
 		this.checkerService = checkerService;
 	}
 

@@ -8,11 +8,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.pawel.validators.LuhnChecksumCalculator;
 import org.pawel.validators.SsnValidator;
 
-class CheckerServiceTest {
+class SsnCheckerServiceTest {
 
 	LuhnChecksumCalculator luhnChecksumCalculator = new LuhnChecksumCalculator();
 	SsnValidator ssnValidator = new SsnValidator(luhnChecksumCalculator);
-	CheckerService checkerService = new CheckerService(ssnValidator);
+	SsnCheckerService checkerService = new SsnCheckerService(ssnValidator);
 
 	@ParameterizedTest
 	@ValueSource(strings = {
