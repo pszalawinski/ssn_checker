@@ -3,20 +3,22 @@ package org.pawel.utils;
 public class SsnUtils {
 
 
-	public String removeCentury(String ssn) {
+	public static String removeCentury(String ssn) {
 		return ssn.substring(2);
 	}
 
-	public String prepareSsn(String rawSsn) {
+	public static String prepareSsn(String rawSsn) {
 		return removeDashes(rawSsn.replaceAll(" ", ""));
 	}
 
-	private String removeDashes(String ssn) {
-		String removedDashes = ssn.replace("-", "");
-		System.out.println("Trimmed ssn: " + ssn.replace("-", ""));
+	public static boolean isPlusOnTheEnd(String preparedSsn) {
+		return String.valueOf(preparedSsn.charAt(preparedSsn.length() - 1)).equals("+");
+	}
+	public static String removeDashes(String number) {
+		String removedDashes = number.replace("-", "");
+		System.out.println("Trimmed ssn: " + number.replace("-", ""));
 		return removedDashes;
 	}
 
-	;
 
 }

@@ -12,7 +12,7 @@ public class Main {
 		CheckerController checkerController = new CheckerController(
 				new CheckerService(
 						new SsnValidator(
-								new LuhnChecksumCalculator()), new SsnUtils()));
+								new LuhnChecksumCalculator())));
 		checkerController.checkSsnNumber();
 		checkerController.checkName();
 	}
