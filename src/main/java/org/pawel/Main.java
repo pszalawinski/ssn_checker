@@ -8,12 +8,12 @@ import org.pawel.validators.SsnValidator;
 
 public class Main {
 
-    public static void main(String[] args) {
-        CheckerController checkerController = new CheckerController(
-                new CheckerService(
-                        new SsnValidator(
-                                new LuhnChecksumCalculator()), new SsnUtils()));
-        checkerController.checkSsnNumber();
-        checkerController.checkName();
-    }
+	public static void main(String[] args) {
+		CheckerController checkerController = new CheckerController(
+				new CheckerService(
+						new SsnValidator(
+								new LuhnChecksumCalculator()), new SsnUtils()));
+		checkerController.checkSsnNumber();
+		checkerController.checkName();
+	}
 }

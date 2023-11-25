@@ -1,4 +1,5 @@
 package org.pawel.validators;
+
 public enum SsnPatterns {
 	PATTERN1("YYYYMMDDXXXX"),
 	PATTERN2("YYYYMMDD-XXXX"),

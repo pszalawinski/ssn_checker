@@ -1,7 +1,7 @@
 package org.pawel.validators;
 
 
-public class LuhnChecksumCalculator implements BaseChecksumCalculator{
+public class LuhnChecksumCalculator implements BaseChecksumCalculator {
 
 	@Override
 	public boolean calculateChecksum(String ssn) {
@@ -22,6 +22,6 @@ public class LuhnChecksumCalculator implements BaseChecksumCalculator{
 			sum = digit / 10 + digit % 10;
 			total += sum;
 		}
-		 	return 10 - total % 10 == checksum;
+		return 10 - total % 10 == checksum;
 	}
 }

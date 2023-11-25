@@ -19,7 +19,7 @@ class LuhnChecksumCalculatorTest {
 		boolean result = luhnChecksumCalculator.calculateChecksum(ssn);
 		//then
 		assertTrue(result);
-	  }
+	}
 
 	@ParameterizedTest
 	@ValueSource(strings = {"6202013892", "9308310121", "7106237114"})

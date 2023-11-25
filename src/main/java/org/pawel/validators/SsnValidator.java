@@ -2,10 +2,10 @@ package org.pawel.validators;
 
 import java.util.regex.Pattern;
 
-public class SsnValidator implements BaseValidator
-{
+public class SsnValidator implements BaseValidator {
 
 	LuhnChecksumCalculator luhnChecksumCalculator;
+
 	public SsnValidator(LuhnChecksumCalculator luhnChecksumCalculator) {
 		this.luhnChecksumCalculator = luhnChecksumCalculator;
 	}
@@ -32,7 +32,7 @@ public class SsnValidator implements BaseValidator
 
 	@Override
 	public boolean isChecksumCorrect(String ssn) {
-		System.out.println("Checksum -"+luhnChecksumCalculator.calculateChecksum(ssn));
+		System.out.println("Checksum -" + luhnChecksumCalculator.calculateChecksum(ssn));
 		return luhnChecksumCalculator.calculateChecksum(ssn);
 	}
 }
