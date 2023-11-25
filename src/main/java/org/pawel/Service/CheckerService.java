@@ -1,5 +1,9 @@
 package org.pawel.Service;
 
+import static org.pawel.utils.SsnUtils.pattern10;
+import static org.pawel.utils.SsnUtils.pattern12;
+
+import java.time.format.DateTimeFormatter;
 import org.pawel.utils.SsnUtils;
 import org.pawel.validators.SsnValidator;
 
@@ -35,7 +39,15 @@ public class CheckerService {
 		}
 
 		if (preparedSsn.length() == 12) {
+			if (!SsnUtils.isValidDate(preparedSsn.substring(0,8), DateTimeFormatter.ofPattern(pattern12))) {
+				System.out.println("Date of birth in given SSN is not correct.");
+				return false;
+			}
 			preparedSsn = SsnUtils.removeCentury(preparedSsn);
+		}
+		if (!SsnUtils.isValidDate(preparedSsn.substring(0,6), DateTimeFormatter.ofPattern(pattern10))) {
+			System.out.println("Date of birth in given SSN is not correct.");
+			return false;
 		}
 
 		boolean checksum = ssnValidator.isChecksumCorrect(preparedSsn);

@@ -1,15 +1,17 @@
 package org.pawel.validators;
 
+import static org.pawel.utils.SsnUtils.pattern10;
+import static org.pawel.utils.SsnUtils.pattern12;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+
 import java.util.regex.Pattern;
 import org.pawel.utils.SsnUtils;
 
 public class SsnValidator implements BaseValidator {
 
-	private static final String pattern10 = "yyMMdd";
-	private static final String pattern12 = "yyyyMMdd";
+
 	LuhnChecksumCalculator luhnChecksumCalculator;
 
 	public SsnValidator(LuhnChecksumCalculator luhnChecksumCalculator) {
@@ -41,11 +43,9 @@ public class SsnValidator implements BaseValidator {
 
 				System.out.println(date);
 			}
-
-
 		}
 
-		if (!isValidDate(date, formatter)) {
+		if (!SsnUtils.isValidDate(date, formatter)) {
 			System.out.println("Date of birth in given SSN is not correct.");
 			return false;
 		}
@@ -77,14 +77,5 @@ public class SsnValidator implements BaseValidator {
 	public boolean isChecksumCorrect(String ssn) {
 		System.out.println("Checksum: " + luhnChecksumCalculator.calculateChecksum(ssn));
 		return luhnChecksumCalculator.calculateChecksum(ssn);
-	}
-
-	private boolean isValidDate(String dateStr, DateTimeFormatter formatter) {
-		try {
-			LocalDate.parse(dateStr, formatter);
-			return true; // If parsing succeeds, the date is valid
-		} catch (DateTimeParseException e) {
-			return false; // Parsing failed, indicating an invalid date
-		}
 	}
 }
