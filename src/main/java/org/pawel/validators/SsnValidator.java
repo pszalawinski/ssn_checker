@@ -1,14 +1,17 @@
 package org.pawel.validators;
 
+import static org.pawel.utils.SsnUtils.pattern10;
+import static org.pawel.utils.SsnUtils.pattern12;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 import java.util.regex.Pattern;
 import org.pawel.utils.SsnUtils;
 
 public class SsnValidator implements BaseValidator {
 
-	private static final String pattern10 = "yyMMdd";
-	private static final String pattern12 = "yyyyMMdd";
+
 	LuhnChecksumCalculator luhnChecksumCalculator;
 
 	public SsnValidator(LuhnChecksumCalculator luhnChecksumCalculator) {
@@ -32,23 +35,35 @@ public class SsnValidator implements BaseValidator {
 				//adjust date
 				LocalDate parsedDate = LocalDate.parse(shortDate, initialFormatter);
 				LocalDate adjustedDate =
-						parsedDate.getYear() <= LocalDate.now().getYear() ? parsedDate.minusYears(100) : parsedDate;
+						parsedDate.getYear() <= LocalDate.now().getYear() ? parsedDate.minusYears(
+								100) : parsedDate;
 
-				date = SsnUtils.removeDashes(adjustedDate.toString().replace("-",""));
+				date = SsnUtils.removeDashes(adjustedDate.toString().replace("-", ""));
 				formatter = DateTimeFormatter.ofPattern(pattern12);
 
 				System.out.println(date);
 			}
-
-
 		}
-		return LocalDate.now().minusYears(100)
+
+		if (!SsnUtils.isValidDate(date, formatter)) {
+			System.out.println("Date of birth in given SSN is not correct.");
+			return false;
+		}
+
+		boolean check = LocalDate.now().minusYears(100)
 				.isAfter(LocalDate.parse(date, formatter));
+		if (check) {
+			return true;
+		} else {
+			System.out.println(
+					"Given SSN is incorrect. Person with this SSN should be older than 100 years, but it is not.");
+			return false;
+		}
 	}
 
 	@Override
 	public boolean isNumber(String preparedSsn) {
-		return !Pattern.matches("[a-zA-Z]", preparedSsn);
+		return Pattern.matches("[a-zA-Z]", preparedSsn);
 	}
 
 	@Override
@@ -60,7 +75,7 @@ public class SsnValidator implements BaseValidator {
 
 	@Override
 	public boolean isChecksumCorrect(String ssn) {
-		System.out.println("Checksum -" + luhnChecksumCalculator.calculateChecksum(ssn));
+		System.out.println("Checksum: " + luhnChecksumCalculator.calculateChecksum(ssn));
 		return luhnChecksumCalculator.calculateChecksum(ssn);
 	}
 }
