@@ -2,8 +2,9 @@ package org.pawel.validators;
 
 public interface BaseValidator {
 
-	 void isOlder();
-	 void isNumber();
-	 void isLengthCorrect();
-	 void isChecksumCorrect();
+	boolean isOlder();
+	boolean isNumber();
+	boolean isProperPattern();
+	boolean isLengthCorrect(String number);
+	boolean isChecksumCorrect(String number);
 }
