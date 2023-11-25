@@ -68,14 +68,11 @@ public class SsnValidator implements BaseValidator {
 
 	@Override
 	public boolean isLengthCorrect(String preparedSsn) {
-		System.out.println("LENGTH of ".concat(preparedSsn).concat("is ").concat(
-				String.valueOf(preparedSsn.length())));
 		return preparedSsn.length() == 10 || preparedSsn.length() == 12;
 	}
 
 	@Override
 	public boolean isChecksumCorrect(String ssn) {
-		System.out.println("Checksum: " + luhnChecksumCalculator.calculateChecksum(ssn));
 		return luhnChecksumCalculator.calculateChecksum(ssn);
 	}
 }
