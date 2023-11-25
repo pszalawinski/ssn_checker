@@ -1,8 +1,5 @@
 package org.pawel.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import org.pawel.utils.SsnUtils;
 import org.pawel.validators.SsnValidator;
 
@@ -19,13 +16,21 @@ public class CheckerService {
 	public boolean isValidSsnNumber(String ssn) {
 		String preparedSsn = SsnUtils.prepareSsn(ssn);
 
-		if (SsnUtils.isPlusOnTheEnd(preparedSsn)
-				&& ssnValidator.isNumber(preparedSsn.replace("+", ""))) {
-			return ssnValidator.isOlder(preparedSsn);
+		if (!ssnValidator.isLengthCorrect(preparedSsn)) {
+			System.out.println("Length of SSN is incorrect");
+			return false;
 		}
 
-		if (!ssnValidator.isLengthCorrect(preparedSsn) && ssnValidator.isNumber(preparedSsn)) {
-			System.out.println("Length of SSN is incorrect");
+		if (SsnUtils.isOnePlusOnTheEnd(preparedSsn)
+				&&
+				!ssnValidator.isNumber(preparedSsn.replace("+", "")))
+		{
+			return ssnValidator.isOlder(preparedSsn);
+
+		}
+
+		if (ssnValidator.isNumber(preparedSsn)) {
+			System.out.println("Given SSN is not a correct numeric value");
 			return false;
 		}
 
@@ -34,7 +39,13 @@ public class CheckerService {
 		}
 
 		boolean checksum = ssnValidator.isChecksumCorrect(preparedSsn);
+
+		if(!checksum){
+			System.out.println("Given SSN is invalid");
+			return checksum;}
+		else {
 		return checksum;
+		}
 
 	}
 

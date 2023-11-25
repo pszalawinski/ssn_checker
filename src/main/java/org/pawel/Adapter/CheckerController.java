@@ -13,8 +13,16 @@ public class CheckerController {
 
 	public void checkSsnNumber() {
 		Scanner scanner = new Scanner(System.in);
-		String ssnNumber = scanner.next();
-		checkerService.isValidSsnNumber(ssnNumber);
+		System.out.println("Provide SSN or type exit");
+		String input = scanner.next();
+
+		while (!input.equals("exit")) {
+			if (
+					checkerService.isValidSsnNumber(input)) {
+				System.out.println("Given SSN is valid");
+			}
+			input = scanner.next();
+		}
 	}
 
 	public void checkName() {

@@ -2,6 +2,7 @@ package org.pawel.validators;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.regex.Pattern;
 import org.pawel.utils.SsnUtils;
 
@@ -32,9 +33,10 @@ public class SsnValidator implements BaseValidator {
 				//adjust date
 				LocalDate parsedDate = LocalDate.parse(shortDate, initialFormatter);
 				LocalDate adjustedDate =
-						parsedDate.getYear() <= LocalDate.now().getYear() ? parsedDate.minusYears(100) : parsedDate;
+						parsedDate.getYear() <= LocalDate.now().getYear() ? parsedDate.minusYears(
+								100) : parsedDate;
 
-				date = SsnUtils.removeDashes(adjustedDate.toString().replace("-",""));
+				date = SsnUtils.removeDashes(adjustedDate.toString().replace("-", ""));
 				formatter = DateTimeFormatter.ofPattern(pattern12);
 
 				System.out.println(date);
@@ -42,13 +44,26 @@ public class SsnValidator implements BaseValidator {
 
 
 		}
-		return LocalDate.now().minusYears(100)
+
+		if (!isValidDate(date, formatter)) {
+			System.out.println("Date of birth in given SSN is not correct.");
+			return false;
+		}
+
+		boolean check = LocalDate.now().minusYears(100)
 				.isAfter(LocalDate.parse(date, formatter));
+		if (check) {
+			return true;
+		} else {
+			System.out.println(
+					"Given SSN is incorrect. Person with this SSN should be older than 100 years, but it is not.");
+			return false;
+		}
 	}
 
 	@Override
 	public boolean isNumber(String preparedSsn) {
-		return !Pattern.matches("[a-zA-Z]", preparedSsn);
+		return Pattern.matches("[a-zA-Z]", preparedSsn);
 	}
 
 	@Override
@@ -60,7 +75,16 @@ public class SsnValidator implements BaseValidator {
 
 	@Override
 	public boolean isChecksumCorrect(String ssn) {
-		System.out.println("Checksum -" + luhnChecksumCalculator.calculateChecksum(ssn));
+		System.out.println("Checksum: " + luhnChecksumCalculator.calculateChecksum(ssn));
 		return luhnChecksumCalculator.calculateChecksum(ssn);
+	}
+
+	private boolean isValidDate(String dateStr, DateTimeFormatter formatter) {
+		try {
+			LocalDate.parse(dateStr, formatter);
+			return true; // If parsing succeeds, the date is valid
+		} catch (DateTimeParseException e) {
+			return false; // Parsing failed, indicating an invalid date
+		}
 	}
 }
