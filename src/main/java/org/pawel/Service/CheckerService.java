@@ -1,14 +1,13 @@
 package org.pawel.Service;
 
+import static org.pawel.utils.SsnUtils.*;
 import static org.pawel.utils.SsnUtils.pattern10;
 import static org.pawel.utils.SsnUtils.pattern12;
 
 import java.time.format.DateTimeFormatter;
-import org.pawel.utils.SsnUtils;
 import org.pawel.validators.SsnValidator;
 
 public class CheckerService {
-
 
 	SsnValidator ssnValidator;
 
@@ -18,19 +17,17 @@ public class CheckerService {
 	}
 
 	public boolean isValidSsnNumber(String ssn) {
-		String preparedSsn = SsnUtils.prepareSsn(ssn);
+		String preparedSsn = prepareSsn(ssn);
 
 		if (!ssnValidator.isLengthCorrect(preparedSsn)) {
 			System.out.println("Length of SSN is incorrect");
 			return false;
 		}
 
-		if (SsnUtils.isOnePlusOnTheEnd(preparedSsn)
+		if (isOnePlusOnTheEnd(preparedSsn)
 				&&
-				!ssnValidator.isNumber(preparedSsn.replace("+", "")))
-		{
+				!ssnValidator.isNumber(preparedSsn.replace("+", ""))) {
 			return ssnValidator.isOlder(preparedSsn);
-
 		}
 
 		if (ssnValidator.isNumber(preparedSsn)) {
@@ -39,26 +36,24 @@ public class CheckerService {
 		}
 
 		if (preparedSsn.length() == 12) {
-			if (!SsnUtils.isValidDate(preparedSsn.substring(0,8), DateTimeFormatter.ofPattern(pattern12))) {
+			if (!isValidDate(preparedSsn.substring(0, 8), DateTimeFormatter.ofPattern(pattern12))) {
 				System.out.println("Date of birth in given SSN is not correct.");
 				return false;
 			}
-			preparedSsn = SsnUtils.removeCentury(preparedSsn);
+			preparedSsn = removeCentury(preparedSsn);
 		}
-		if (!SsnUtils.isValidDate(preparedSsn.substring(0,6), DateTimeFormatter.ofPattern(pattern10))) {
+		if (!isValidDate(preparedSsn.substring(0, 6), DateTimeFormatter.ofPattern(pattern10))) {
 			System.out.println("Date of birth in given SSN is not correct.");
 			return false;
 		}
 
 		boolean checksum = ssnValidator.isChecksumCorrect(preparedSsn);
 
-		if(!checksum){
-			System.out.println("Given SSN is invalid");
-			return checksum;}
-		else {
-		return checksum;
+		if (!checksum) {
+			System.out.println("Given SSN is invalid, checksum is not correct");
+			return false;
+		} else {
+			return true;
 		}
-
 	}
-
 }

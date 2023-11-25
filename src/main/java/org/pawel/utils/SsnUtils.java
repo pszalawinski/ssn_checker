@@ -1,18 +1,19 @@
 package org.pawel.utils;
 
+import java.io.OutputStreamWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.regex.Pattern;
 
 public class SsnUtils {
-
 	public static final String pattern10 = "yyMMdd";
 	public static final String pattern12 = "yyyyMMdd";
 
 	static Pattern special = Pattern.compile ("[+]");
 	public static String removeCentury(String ssn) {
 		return ssn.substring(2);
+
 	}
 
 	public static String prepareSsn(String rawSsn) {
@@ -24,17 +25,15 @@ public class SsnUtils {
 				preparedSsn.charAt(preparedSsn.length() - 1)).equals("+");
 	}
 	public static String removeDashes(String number) {
-		String removedDashes = number.replace("-", "");
-		System.out.println("Trimmed ssn: " + number.replace("-", ""));
-		return removedDashes;
+		return number.replace("-", "");
 	}
 
 	public static boolean isValidDate(String dateStr, DateTimeFormatter formatter) {
 		try {
 			LocalDate.parse(dateStr, formatter);
-			return true; // If parsing succeeds, the date is valid
+			return true;
 		} catch (DateTimeParseException e) {
-			return false; // Parsing failed, indicating an invalid date
+			return false;
 		}
 	}
 
