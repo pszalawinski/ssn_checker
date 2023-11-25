@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 import org.pawel.utils.SsnUtils;
 
-public class SsnValidator implements BaseValidator {
+public class SsnValidator implements BaseNumberValidator {
 
 
 	LuhnChecksumCalculator luhnChecksumCalculator;

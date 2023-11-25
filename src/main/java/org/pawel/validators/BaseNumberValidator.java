@@ -1,6 +1,6 @@
 package org.pawel.validators;
 
-public interface BaseValidator {
+public interface BaseNumberValidator {
 
 	boolean isOlder(String number);
 
