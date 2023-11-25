@@ -52,11 +52,6 @@ public class SsnValidator implements BaseValidator {
 	}
 
 	@Override
-	public boolean isProperPattern() {
-		return true;
-	}
-
-	@Override
 	public boolean isLengthCorrect(String preparedSsn) {
 		System.out.println("LENGTH of ".concat(preparedSsn).concat("is ").concat(
 				String.valueOf(preparedSsn.length())));
