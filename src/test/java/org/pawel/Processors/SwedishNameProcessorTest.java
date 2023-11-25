@@ -2,10 +2,7 @@ package org.pawel.Processors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Rule;
-import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.pawel.validators.NameValidator;
@@ -14,8 +11,6 @@ import org.pawel.validators.NameValidator;
 class SwedishNameProcessorTest {
 	NameValidator nameValidator;
 	SwedishNameProcessor swedishNameProcessor;
-	@Rule
-	public final SystemOutRule systemOutRule= new SystemOutRule().enableLog();
 
 	@BeforeEach
 	void before(){
@@ -49,7 +44,6 @@ class SwedishNameProcessorTest {
 	void shouldReturnFalseIfNameHasNumbersOrTooShort(String name){
 		//given
 		//when
-
 		//then
 		assertFalse(swedishNameProcessor.isNameValid(name));
 	}
