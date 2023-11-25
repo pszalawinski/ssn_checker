@@ -27,7 +27,7 @@ class CheckerServiceTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = {"19620201-389", "19620201389","1962 0201 38 9", "620201-389", "710 6237 11", "9308", "930831 012123"})
+	@ValueSource(strings = {"A9620201-389","A19620201-389","19620201-389", "19620201389","1962 0201 38 9", "620201-389", "710 6237 11", "9308", "930831 012123"})
 	void ssnIsInProperlyGiven(String rawSsn){
 		//given
 		//when

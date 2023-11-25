@@ -1,5 +1,7 @@
 package org.pawel.validators;
 
+import java.util.regex.Pattern;
+
 public class SsnValidator implements BaseValidator
 {
 
@@ -14,8 +16,8 @@ public class SsnValidator implements BaseValidator
 	}
 
 	@Override
-	public boolean isNumber() {
-		return true;
+	public boolean isNumber(String preparedSsn) {
+		return !Pattern.matches("[a-zA-Z]+", preparedSsn);
 	}
 
 	@Override

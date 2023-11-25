@@ -15,10 +15,11 @@ public class CheckerService {
 	public boolean isValidSsnNumber(String ssn){
 		String preparedSsn = ssnUtils.prepareSsn(ssn);
 
-		if(!ssnValidator.isLengthCorrect(preparedSsn))
+		if(!ssnValidator.isLengthCorrect(preparedSsn) && ssnValidator.isNumber(preparedSsn))
 		{System.out.println("Length of SSN is incorrect");
 			return false;
 				}
+
 		if(preparedSsn.length()==12){
 			preparedSsn = ssnUtils.removeCentury(preparedSsn);
 		}
