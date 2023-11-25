@@ -7,11 +7,11 @@ import static org.pawel.utils.SsnUtils.pattern12;
 import java.time.format.DateTimeFormatter;
 import org.pawel.validators.SsnValidator;
 
-public class CheckerService {
+public class SsnCheckerService {
 
 	SsnValidator ssnValidator;
 
-	public CheckerService(SsnValidator ssnValidator) {
+	public SsnCheckerService(SsnValidator ssnValidator) {
 		this.ssnValidator = ssnValidator;
 
 	}
