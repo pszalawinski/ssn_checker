@@ -1,16 +1,16 @@
 package org.pawel;
 
-import org.pawel.adapter.CheckerController;
-import org.pawel.service.NameCheckerService;
-import org.pawel.service.SsnCheckerService;
+import org.pawel.adapter.ValidatorController;
+import org.pawel.service.NameValidatorService;
+import org.pawel.service.SsnValidatorService;
 
 public class Main {
 
 	public static void main(String[] args) {
-		CheckerController checkerController = new CheckerController(
-				new SsnCheckerService(),
-				new NameCheckerService());
+		ValidatorController validatorController = new ValidatorController(
+				new SsnValidatorService(),
+				new NameValidatorService());
 
-		checkerController.chooseChecker();
+		validatorController.chooseChecker();
 	}
 }

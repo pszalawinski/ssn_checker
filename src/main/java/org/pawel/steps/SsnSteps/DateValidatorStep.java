@@ -1,4 +1,4 @@
-package org.pawel.processors.SsnSteps;
+package org.pawel.steps.SsnSteps;
 
 import static org.pawel.utils.Constants.WRONG;
 import static org.pawel.utils.SsnUtils.isValidDate;

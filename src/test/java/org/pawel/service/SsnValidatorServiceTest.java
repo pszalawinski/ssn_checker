@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class SsnCheckerServiceTest {
+public class SsnValidatorServiceTest {
 
-	SsnCheckerService checkerService = new SsnCheckerService();
+	SsnValidatorService checkerService = new SsnValidatorService();
 
 	@ParameterizedTest
 	@ValueSource(strings = {

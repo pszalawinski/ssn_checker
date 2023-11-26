@@ -2,18 +2,18 @@ package org.pawel.service;
 
 import static org.pawel.utils.SsnUtils.*;
 
-import org.pawel.processors.SsnSteps.AgeValidatorStep;
-import org.pawel.processors.SsnSteps.ChecksumValidatorStep;
-import org.pawel.processors.SsnSteps.DateValidatorStep;
-import org.pawel.processors.SsnSteps.LengthValidatorStep;
-import org.pawel.processors.SsnSteps.NumberValidatorStep;
-import org.pawel.processors.SsnSteps.SsnBaseStep;
+import org.pawel.steps.SsnSteps.AgeValidatorStep;
+import org.pawel.steps.SsnSteps.ChecksumValidatorStep;
+import org.pawel.steps.SsnSteps.DateValidatorStep;
+import org.pawel.steps.SsnSteps.LengthValidatorStep;
+import org.pawel.steps.SsnSteps.NumberValidatorStep;
+import org.pawel.steps.SsnSteps.SsnBaseStep;
 import org.pawel.validators.LuhnChecksumCalculator;
 import org.pawel.validators.SsnValidator;
 
-public class SsnCheckerService {
+public class SsnValidatorService {
 
-	public SsnCheckerService() {
+	public SsnValidatorService() {
 
 	}
 

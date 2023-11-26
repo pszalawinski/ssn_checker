@@ -4,19 +4,19 @@ import static org.pawel.utils.Constants.*;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import org.pawel.service.NameCheckerService;
-import org.pawel.service.SsnCheckerService;
+import org.pawel.service.NameValidatorService;
+import org.pawel.service.SsnValidatorService;
 
-public class CheckerController {
+public class ValidatorController {
 
-	SsnCheckerService checkerService;
-	NameCheckerService nameCheckerService;
+	SsnValidatorService checkerService;
+	NameValidatorService nameValidatorService;
 	Scanner scanner = new Scanner(System.in);
 
-	public CheckerController(SsnCheckerService checkerService,
-			NameCheckerService nameCheckerService) {
+	public ValidatorController(SsnValidatorService checkerService,
+			NameValidatorService nameValidatorService) {
 		this.checkerService = checkerService;
-		this.nameCheckerService = nameCheckerService;
+		this.nameValidatorService = nameValidatorService;
 	}
 
 	public void chooseChecker() {
@@ -53,7 +53,7 @@ public class CheckerController {
 		String input = scanner.nextLine();
 
 		while (!input.equals(EXIT)) {
-			if (nameCheckerService.isValidName(input)) {
+			if (nameValidatorService.isValidName(input)) {
 				System.out.println("Given Name is valid ".concat(
 						Arrays.toString(CORRECT)));
 			}

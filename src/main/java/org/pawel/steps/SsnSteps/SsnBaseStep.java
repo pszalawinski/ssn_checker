@@ -1,4 +1,4 @@
-package org.pawel.processors.SsnSteps;
+package org.pawel.steps.SsnSteps;
 
 public abstract class SsnBaseStep {
 
