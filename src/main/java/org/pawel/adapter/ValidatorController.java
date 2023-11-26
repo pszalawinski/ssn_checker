@@ -19,21 +19,21 @@ public class ValidatorController {
 		this.nameValidatorService = nameValidatorService;
 	}
 
-	public void chooseChecker() {
+	public void chooseValidator() {
 		System.out.println(MAIN_MESSAGE);
 		String input = scanner.nextLine();
 		while (!input.equals(EXIT)) {
 			switch (input) {
-				case "1" -> checkSsnNumber();
-				case "2" -> checkName();
+				case "1" -> validateSsnNumber();
+				case "2" -> validateName();
 			}
 			System.out.println(MAIN_MESSAGE);
 			input = scanner.nextLine();
 		}
-
+		scanner.close();
 	}
 
-	public void checkSsnNumber() {
+	public void validateSsnNumber() {
 		System.out.println(SSN_OR_EXIT);
 		String input = scanner.nextLine();
 
@@ -48,7 +48,7 @@ public class ValidatorController {
 		}
 	}
 
-	public void checkName() {
+	public void validateName() {
 		System.out.println(NAME_OR_EXIT);
 		String input = scanner.nextLine();
 
