@@ -18,6 +18,7 @@ The year a person turns 100 the hyphen is replaced with a plus sign
 **Personal Name:**
 - Swedish alphabetical characters including swedish å, ä and Ö
 - name is not empty or to short
+- name has not numerics
 
 <span style="color:lightgreen">
 
