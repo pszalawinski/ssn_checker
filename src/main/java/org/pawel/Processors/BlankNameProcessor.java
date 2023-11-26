@@ -3,11 +3,11 @@ package org.pawel.Processors;
 import java.util.Arrays;
 import org.pawel.validators.NameValidator;
 
-public class NameBlankProcessor extends WordProcessor {
+public class BlankNameProcessor extends WordProcessor {
 
 	NameValidator nameValidator;
-	public NameBlankProcessor(NameValidator nameValidator) {
-		super("NameBlankProcessor");
+	public BlankNameProcessor(NameValidator nameValidator) {
+		super("BlankNameProcessor");
 		this.nameValidator = nameValidator;
 	}
 	@Override
