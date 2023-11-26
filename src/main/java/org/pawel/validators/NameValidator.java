@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class NameValidator implements BaseWordValidator {
 
-	Pattern pattern = Pattern.compile("[a-zA-ZäåöÄÅÖ ]+");
+	Pattern numericPattern = Pattern.compile("[1-9].*+");
 	Pattern swedishLetters = Pattern.compile("[äåöÄÅÖ]");
 
 	@Override
@@ -33,8 +33,8 @@ public class NameValidator implements BaseWordValidator {
 	}
 
 	public boolean isNotNumeric(String name) {
-		Matcher matcher = pattern.matcher(name);
-		return matcher.matches();
+		Matcher matcher = numericPattern.matcher(name);
+		return !matcher.find();
 	}
 
 	public boolean hasSwedishLetter(String name) {
