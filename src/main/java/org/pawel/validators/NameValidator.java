@@ -14,7 +14,7 @@ public class NameValidator implements BaseWordValidator {
 		if (word.length() >= 2) {
 			return true;
 		} else {
-			System.out.println("Name to short.");
+			System.out.println("Name is too short.");
 			return false;
 		}
 	}
