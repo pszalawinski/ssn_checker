@@ -11,6 +11,6 @@ public class Main {
 				new SsnValidatorService(),
 				new NameValidatorService());
 
-		validatorController.chooseChecker();
+		validatorController.chooseValidator();
 	}
 }
