@@ -1,6 +1,5 @@
 package org.pawel.processors;
 
-import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.BeforeEach;
