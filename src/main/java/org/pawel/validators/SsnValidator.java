@@ -26,7 +26,6 @@ public class SsnValidator implements BaseNumberValidator {
 			case 12 -> {
 				date = preparedSsn.substring(0, 8);
 				formatter = DateTimeFormatter.ofPattern(pattern12);
-				System.out.println(date);
 			}
 			default -> {
 				String shortDate = preparedSsn.substring(0, 6);
