@@ -8,7 +8,7 @@ public class LuhnChecksumCalculator implements BaseChecksumCalculator {
 		return isValidLuhn(ssn);
 	}
 
-	public static boolean isValidLuhn(String number) {
+	private static boolean isValidLuhn(String number) {
 		int checksum = Character.getNumericValue(number.charAt(number.length() - 1));
 		int total = 0;
 
