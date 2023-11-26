@@ -1,11 +1,13 @@
 package org.pawel.validators;
 
+import static org.pawel.utils.Constants.WRONG;
 import static org.pawel.utils.SsnUtils.pattern10;
 import static org.pawel.utils.SsnUtils.pattern12;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import java.util.Arrays;
 import java.util.regex.Pattern;
 import org.pawel.utils.SsnUtils;
 
@@ -39,13 +41,12 @@ public class SsnValidator implements BaseNumberValidator {
 
 				date = SsnUtils.removeDashes(adjustedDate.toString().replace("-", ""));
 				formatter = DateTimeFormatter.ofPattern(pattern12);
-
-				System.out.println(date);
 			}
 		}
 
 		if (!SsnUtils.isValidDate(date, formatter)) {
-			System.out.println("Date of birth in given SSN is not correct.");
+			System.out.println("Date of birth in given SSN is not correct.".concat(
+					Arrays.toString(WRONG)));
 			return false;
 		}
 
@@ -55,7 +56,8 @@ public class SsnValidator implements BaseNumberValidator {
 			return true;
 		} else {
 			System.out.println(
-					"Given SSN is incorrect. Person with this SSN should be older than 100 years, but it is not.");
+					"Given SSN is incorrect. Person with this SSN should be older than 100 years, but it is not.".concat(
+							Arrays.toString(WRONG)));
 			return false;
 		}
 	}
