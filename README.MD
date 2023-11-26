@@ -27,3 +27,7 @@ The year a person turns 100 the hyphen is replaced with a plus sign
 
 </span>
 
+## Demo
+
+![](https://github.com/pszalawinski/ssn_checker/blob/master/demo/ssn_checker_demo.gif)
+
