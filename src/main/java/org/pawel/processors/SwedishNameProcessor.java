@@ -1,8 +1,5 @@
 package org.pawel.processors;
 
-import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.pawel.validators.NameValidator;
 
 public class SwedishNameProcessor extends WordProcessor {
