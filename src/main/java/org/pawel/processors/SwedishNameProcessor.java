@@ -7,7 +7,6 @@ import org.pawel.validators.NameValidator;
 
 public class SwedishNameProcessor extends WordProcessor {
 
-	Pattern pattern = Pattern.compile("[äåöÄÅÖ]");
 	Boolean isSwedishChar = false;
 	NameValidator nameValidator;
 
@@ -23,14 +22,10 @@ public class SwedishNameProcessor extends WordProcessor {
 
 	@Override
 	public boolean isNameValid(String name) {
-		Matcher matcher = pattern.matcher(name);
-		if (matcher.find()) {
-			isSwedishChar = true;
-			System.out.println("Provided name with Swedish character.".concat(
-					Arrays.toString(Character.toChars(0x270C))));
-		}
 
-		if (nameValidator.isLengthValid(name) && nameValidator.isNotNumeric(name)) {
+		isSwedishChar = nameValidator.hasSwedishLetter(name);
+
+		if (nameValidator.isLengthValid(name)) {
 			nameValidator.isFullNameGiven(name);
 			return true;
 		} else {
