@@ -1,4 +1,4 @@
-package org.pawel.Service;
+package org.pawel.service;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
