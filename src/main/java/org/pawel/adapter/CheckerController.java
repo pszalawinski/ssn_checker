@@ -1,10 +1,10 @@
-package org.pawel.Adapter;
+package org.pawel.adapter;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
-import org.pawel.Service.NameCheckerService;
-import org.pawel.Service.SsnCheckerService;
+import org.pawel.service.NameCheckerService;
+import org.pawel.service.SsnCheckerService;
 
 public class CheckerController {
 

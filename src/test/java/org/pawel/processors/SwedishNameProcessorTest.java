@@ -1,4 +1,4 @@
-package org.pawel.Processors;
+package org.pawel.processors;
 
 import static org.junit.jupiter.api.Assertions.*;
 

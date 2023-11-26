@@ -1,4 +1,4 @@
-package org.pawel.Processors;
+package org.pawel.processors;
 
 import java.util.Arrays;
 import org.pawel.validators.NameValidator;

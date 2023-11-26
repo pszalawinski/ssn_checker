@@ -1,9 +1,9 @@
 package org.pawel;
 
 import java.io.IOException;
-import org.pawel.Adapter.CheckerController;
-import org.pawel.Service.NameCheckerService;
-import org.pawel.Service.SsnCheckerService;
+import org.pawel.adapter.CheckerController;
+import org.pawel.service.NameCheckerService;
+import org.pawel.service.SsnCheckerService;
 import org.pawel.validators.LuhnChecksumCalculator;
 import org.pawel.validators.SsnValidator;
 

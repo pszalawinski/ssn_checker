@@ -1,8 +1,8 @@
-package org.pawel.Service;
+package org.pawel.service;
 
-import org.pawel.Processors.BlankNameProcessor;
-import org.pawel.Processors.SwedishNameProcessor;
-import org.pawel.Processors.WordProcessor;
+import org.pawel.processors.BlankNameProcessor;
+import org.pawel.processors.SwedishNameProcessor;
+import org.pawel.processors.WordProcessor;
 import org.pawel.validators.NameValidator;
 
 public class NameCheckerService {

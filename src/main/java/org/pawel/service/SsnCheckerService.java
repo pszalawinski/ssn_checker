@@ -1,4 +1,4 @@
-package org.pawel.Service;
+package org.pawel.service;
 
 import static org.pawel.utils.SsnUtils.*;
 import static org.pawel.utils.SsnUtils.pattern10;
