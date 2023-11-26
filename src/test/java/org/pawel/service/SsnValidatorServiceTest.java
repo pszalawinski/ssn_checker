@@ -5,14 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.pawel.validators.LuhnChecksumCalculator;
-import org.pawel.validators.SsnValidator;
 
-class SsnCheckerServiceTest {
+public class SsnValidatorServiceTest {
 
-	LuhnChecksumCalculator luhnChecksumCalculator = new LuhnChecksumCalculator();
-	SsnValidator ssnValidator = new SsnValidator(luhnChecksumCalculator);
-	SsnCheckerService checkerService = new SsnCheckerService(ssnValidator);
+	SsnValidatorService checkerService = new SsnValidatorService();
 
 	@ParameterizedTest
 	@ValueSource(strings = {
@@ -42,5 +38,4 @@ class SsnCheckerServiceTest {
 		//then
 		assertFalse(result);
 	}
-
 }

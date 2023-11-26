@@ -1,19 +1,19 @@
-package org.pawel.processors;
+package org.pawel.steps.NameSteps;
 
 import org.pawel.validators.NameValidator;
 
-public class SwedishNameProcessor extends WordProcessor {
+public class SwedishNameStep extends WordStep {
 
-	Boolean isSwedishChar = false;
+	public Boolean isSwedishChar = false;
 	NameValidator nameValidator;
 
-	public SwedishNameProcessor(NameValidator nameValidator) {
-		super("SwedishNameProcessor");
+	public SwedishNameStep(NameValidator nameValidator) {
+		super("SwedishNameStep");
 		this.nameValidator = nameValidator;
 	}
 
 	@Override
-	public void setNext(WordProcessor nextProcessor) {
+	public void setNext(WordStep nextProcessor) {
 		this.nextProcessor = nextProcessor;
 	}
 

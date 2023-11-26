@@ -1,17 +1,19 @@
-package org.pawel.processors;
+package org.pawel.steps.NameSteps;
+
+import static org.pawel.utils.Constants.WRONG;
 
 import java.util.Arrays;
 import org.pawel.validators.NameValidator;
 
-public class BlankNameProcessor extends WordProcessor {
+public class BlankNameStep extends WordStep {
 
 	NameValidator nameValidator;
-	public BlankNameProcessor(NameValidator nameValidator) {
-		super("BlankNameProcessor");
+	public BlankNameStep(NameValidator nameValidator) {
+		super("BlankNameStep");
 		this.nameValidator = nameValidator;
 	}
 	@Override
-	public void setNext(WordProcessor nextProcessor){
+	public void setNext(WordStep nextProcessor){
 		this.nextProcessor=nextProcessor;
 	}
 
@@ -21,7 +23,7 @@ public class BlankNameProcessor extends WordProcessor {
 			return nextProcessor.isNameValid(name);
 		}
 		System.out.println("Name is empty".concat(
-				Arrays.toString(Character.toChars(0x274C))));
+				Arrays.toString(WRONG)));
 		return false;
 	}
 

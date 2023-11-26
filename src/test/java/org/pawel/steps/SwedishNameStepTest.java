@@ -1,21 +1,22 @@
-package org.pawel.processors;
+package org.pawel.steps;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.pawel.steps.NameSteps.SwedishNameStep;
 import org.pawel.validators.NameValidator;
 
-class SwedishNameProcessorTest {
+class SwedishNameStepTest {
 
 	NameValidator nameValidator;
-	SwedishNameProcessor swedishNameProcessor;
+	SwedishNameStep swedishNameStep;
 
 	@BeforeEach
 	void before() {
 		this.nameValidator = new NameValidator();
-		this.swedishNameProcessor = new SwedishNameProcessor(nameValidator);
+		this.swedishNameStep = new SwedishNameStep(nameValidator);
 
 	}
 
@@ -24,9 +25,9 @@ class SwedishNameProcessorTest {
 	void shouldReturnInformationThatNameHasSwedishChar(String name) {
 		//given
 		//when
-		swedishNameProcessor.isNameValid(name);
+		swedishNameStep.isNameValid(name);
 		//then
-		assertTrue(swedishNameProcessor.isSwedishChar);
+		assertTrue(swedishNameStep.isSwedishChar);
 	}
 
 	@ParameterizedTest
@@ -34,8 +35,8 @@ class SwedishNameProcessorTest {
 	void shouldReturnInformationThatNameHasNotSwedishChar(String name) {
 		//given
 		//when
-		swedishNameProcessor.isNameValid(name);
+		swedishNameStep.isNameValid(name);
 		//then
-		assertFalse(swedishNameProcessor.isSwedishChar);
+		assertFalse(swedishNameStep.isSwedishChar);
 	}
 }

@@ -1,21 +1,22 @@
-package org.pawel.processors;
+package org.pawel.steps;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.pawel.steps.NameSteps.NumericNameStep;
 import org.pawel.validators.NameValidator;
 
-public class NumericNameProcessorTest {
+public class NumericNameStepTest {
 
 	NameValidator nameValidator;
-	NumericNameProcessor numericNameProcessor;
+	NumericNameStep numericNameStep;
 
 	@BeforeEach
 	void before(){
 		this.nameValidator = new NameValidator();
-		this.numericNameProcessor = new NumericNameProcessor(nameValidator);
+		this.numericNameStep = new NumericNameStep(nameValidator);
 
 	}
 
@@ -25,7 +26,7 @@ public class NumericNameProcessorTest {
 		//given
 		//when
 		//then
-		assertFalse(numericNameProcessor.isNameValid(name));
+		assertFalse(numericNameStep.isNameValid(name));
 	}
 
 }
